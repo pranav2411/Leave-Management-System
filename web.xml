@@ -1,0 +1,58 @@
+<web-app>
+    <servlet>
+        <servlet-name>LoginServlet</servlet-name>
+        <servlet-class>com.lms.servlet.LoginServlet</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>LoginServlet</servlet-name>
+        <url-pattern>/LoginServlet</url-pattern>
+    </servlet-mapping>
+
+    <servlet>
+        <servlet-name>ApplyLeaveServlet</servlet-name>
+        <servlet-class>com.lms.servlet.ApplyLeaveServlet</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>ApplyLeaveServlet</servlet-name>
+        <url-pattern>/ApplyLeaveServlet</url-pattern>
+    </servlet-mapping>
+
+    <servlet>
+        <servlet-name>ViewStatusServlet</servlet-name>
+        <servlet-class>com.lms.servlet.ViewStatusServlet</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>ViewStatusServlet</servlet-name>
+        <url-pattern>/ViewStatusServlet</url-pattern>
+    </servlet-mapping>
+
+    <servlet>
+        <servlet-name>ManageLeaveServlet</servlet-name>
+        <servlet-class>com.lms.servlet.ManageLeaveServlet</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>ManageLeaveServlet</servlet-name>
+        <url-pattern>/ManageLeaveServlet</url-pattern>
+    </servlet-mapping>
+    
+    <servlet>
+    <servlet-name>RegisterServlet</servlet-name>
+    <servlet-class>com.lms.servlet.RegisterServlet</servlet-class>
+</servlet>
+
+<servlet-mapping>
+    <servlet-name>RegisterServlet</servlet-name>
+    <url-pattern>/RegisterServlet</url-pattern>
+</servlet-mapping>
+<servlet>
+    <servlet-name>UpdateLeaveServlet</servlet-name>
+    <servlet-class>com.lms.servlet.UpdateLeaveServlet</servlet-class>
+</servlet>
+
+<servlet-mapping>
+    <servlet-name>UpdateLeaveServlet</servlet-name>
+    <url-pattern>/updateLeave</url-pattern>
+</servlet-mapping>
+
+    
+</web-app>
