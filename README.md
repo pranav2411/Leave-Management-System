@@ -1,4 +1,3 @@
-Sure! Here's a clean and professional **project description** for your **Online Leave Management System** built using **Servlets, JSP, and MySQL**.
 
 ---
 
