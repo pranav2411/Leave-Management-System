@@ -1,16 +1,23 @@
-#!/bin/bash
+#!/bin/sh
 
-# Ensure MariaDB run and data directories exist with correct permissions
-mkdir -p /var/run/mysqld
-chown -R mysql:mysql /var/run/mysqld
+# Ensure MariaDB runtime and data directories exist with correct permissions
+mkdir -p /run/mysqld
+chown -R mysql:mysql /run/mysqld
 chown -R mysql:mysql /var/lib/mysql
 
-echo "Starting MariaDB/MySQL..."
-service mariadb start || service mysql start
+# Initialize MariaDB data directory if not already initialized
+if [ ! -d "/var/lib/mysql/mysql" ]; then
+    echo "Initializing MariaDB data directory..."
+    mysql_install_db --user=mysql --datadir=/var/lib/mysql --skip-test-db > /dev/null
+fi
 
-# Wait for database to start
-echo "Waiting for database to accept connections..."
-until mysqladmin ping -h "localhost" --silent; do
+# Start MariaDB in the background
+echo "Starting MariaDB..."
+mysqld --user=mysql --datadir=/var/lib/mysql --skip-networking=0 &
+
+# Wait for MariaDB to accept connections
+echo "Waiting for MariaDB to start..."
+until mysqladmin ping --silent; do
     sleep 1
 done
 

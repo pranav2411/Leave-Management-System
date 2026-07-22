@@ -1,13 +1,10 @@
-FROM tomcat:9.0-jdk11-temurin
+FROM tomcat:9.0-jdk11-alpine
 
-# Avoid interactive prompts
-ENV DEBIAN_FRONTEND=noninteractive
-
-# Install MariaDB (lightweight MySQL drop-in replacement) and curl
-RUN apt-get update && apt-get install -y \
-    mariadb-server \
-    curl \
-    && rm -rf /var/lib/apt/lists/*
+# Install MariaDB (extremely lightweight) and curl
+RUN apk add --no-cache \
+    mariadb \
+    mariadb-client \
+    curl
 
 # Download MySQL JDBC driver directly into Tomcat's global library folder
 RUN curl -L -o /usr/local/tomcat/lib/mysql-connector-java-8.0.28.jar \
