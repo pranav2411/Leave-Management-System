@@ -1,4 +1,4 @@
-FROM tomcat:9.0-jdk11-alpine
+FROM tomcat:9.0-jdk11-temurin-alpine
 
 # Install MariaDB (extremely lightweight) and curl
 RUN apk add --no-cache \
