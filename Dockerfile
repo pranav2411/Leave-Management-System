@@ -1,8 +1,8 @@
 FROM alpine:3.20
 
-# Install OpenJDK 11 JRE, MariaDB, and curl
+# Install OpenJDK 17 JRE (required since class files are compiled with Java 17 / major version 61), MariaDB, and curl
 RUN apk add --no-cache \
-    openjdk11-jre \
+    openjdk17-jre \
     mariadb \
     mariadb-client \
     curl
