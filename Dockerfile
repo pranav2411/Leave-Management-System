@@ -1,4 +1,4 @@
-FROM tomcat:9.0-jdk11-slim
+FROM tomcat:9.0-jdk11-temurin
 
 # Avoid interactive prompts
 ENV DEBIAN_FRONTEND=noninteractive
