@@ -1,10 +1,18 @@
-FROM tomcat:9.0-jdk11-temurin-alpine
+FROM alpine:3.20
 
-# Install MariaDB (extremely lightweight) and curl
+# Install OpenJDK 11 JRE, MariaDB, and curl
 RUN apk add --no-cache \
+    openjdk11-jre \
     mariadb \
     mariadb-client \
     curl
+
+# Install Apache Tomcat 9
+ENV TOMCAT_VERSION=9.0.91
+RUN curl -O https://archive.apache.org/dist/tomcat/tomcat-9/v${TOMCAT_VERSION}/bin/apache-tomcat-${TOMCAT_VERSION}.tar.gz \
+    && tar -xf apache-tomcat-${TOMCAT_VERSION}.tar.gz \
+    && mv apache-tomcat-${TOMCAT_VERSION} /usr/local/tomcat \
+    && rm apache-tomcat-${TOMCAT_VERSION}.tar.gz
 
 # Download MySQL JDBC driver directly into Tomcat's global library folder
 RUN curl -L -o /usr/local/tomcat/lib/mysql-connector-java-8.0.28.jar \
