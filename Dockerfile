@@ -14,6 +14,9 @@ RUN curl -O https://archive.apache.org/dist/tomcat/tomcat-9/v${TOMCAT_VERSION}/b
     && mv apache-tomcat-${TOMCAT_VERSION} /usr/local/tomcat \
     && rm apache-tomcat-${TOMCAT_VERSION}.tar.gz
 
+# Disable Tomcat shutdown port to prevent warning logs from Render's port probes
+RUN sed -i 's/port="8005"/port="-1"/g' /usr/local/tomcat/conf/server.xml
+
 # Download MySQL JDBC driver directly into Tomcat's global library folder
 RUN curl -L -o /usr/local/tomcat/lib/mysql-connector-java-8.0.28.jar \
     https://repo1.maven.org/maven2/mysql/mysql-connector-java/8.0.28/mysql-connector-java-8.0.28.jar
