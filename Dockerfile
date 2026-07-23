@@ -35,7 +35,7 @@ COPY . .
 RUN mkdir -p /usr/local/tomcat/webapps/ROOT/WEB-INF/classes/com/lms/servlet \
     && mkdir -p /usr/local/tomcat/webapps/ROOT/WEB-INF/lib \
     && cp -r /app/WEB-INF/* /usr/local/tomcat/webapps/ROOT/WEB-INF/ 2>/dev/null || true \
-    && cp /app/*.jsp /usr/local/tomcat/webapps/ROOT/ 2>/dev/null || true \
+    && cp /app/*.jsp /app/*.css /usr/local/tomcat/webapps/ROOT/ 2>/dev/null || true \
     && cp /app/web.xml /usr/local/tomcat/webapps/ROOT/WEB-INF/ 2>/dev/null || true \
     && cp /app/*.class /usr/local/tomcat/webapps/ROOT/WEB-INF/classes/com/lms/servlet/ 2>/dev/null || true \
     && rm -rf /usr/local/tomcat/webapps/ROOT/*.class /usr/local/tomcat/webapps/ROOT/web.xml

@@ -56,3 +56,26 @@ This system streamlines the leave application and approval process by allowing e
 - Reduces paperwork and manual HR involvement
 - Accessible anytime within an internal network
 - Improves organizational efficiency and transparency
+
+---
+
+## 🐳 How to Run with Docker (Persistent Data)
+
+To build the Docker image and run it without losing database data upon restarts/rebuilds, run the following commands:
+
+### 1. Build the Docker Image
+```bash
+docker build -t leave-system .
+```
+
+### 2. Run the Container with a Volume Mount
+Mount the internal MariaDB database directory (`/var/lib/mysql`) to a Docker volume so your data persists:
+```bash
+docker run -d \
+  -p 8080:8080 \
+  -v lms-db-volume:/var/lib/mysql \
+  --name lms-app \
+  leave-system
+```
+Your application will be live at: [http://localhost:8080/](http://localhost:8080/)
+

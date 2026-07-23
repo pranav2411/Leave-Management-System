@@ -1,14 +1,14 @@
-CREATE DATABASE leave_system;
+CREATE DATABASE IF NOT EXISTS leave_system;
 
 
 USE leave_system;
-CREATE TABLE users (
+CREATE TABLE IF NOT EXISTS users (
 id INT AUTO_INCREMENT PRIMARY KEY,
 username VARCHAR(50) UNIQUE NOT NULL,
 password VARCHAR(255) NOT NULL,
 role ENUM('admin', 'employee') DEFAULT 'employee'
 );
-CREATE TABLE leave_applications (
+CREATE TABLE IF NOT EXISTS leave_applications (
 id INT AUTO_INCREMENT PRIMARY KEY,
 user_id INT,
 start_date DATE,
